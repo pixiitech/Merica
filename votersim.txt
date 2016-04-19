@@ -1,0 +1,58 @@
+## Getting Started
+
+There are _many_ possible solutions to this problem. We _recommend_ modeling this project using `class`es. If you decide to use OOP techniques, the following are just _suggestions_.
+
+### Characters
+
+There are two _types_ of people in this simulation: politicians and voters. Any time you use the word "type" to describe a feature, that's your coder conscience hinting that you should be modeling each of those types with `class`es. In older versions of Ruby, the now deprecated `type` method was (almost) synonymous with `class`.
+
+So a good start to this program is to define a `Voter` class and a `Politician` class.
+
+There are certain features that `Voter`s and `Politician`s share, like the ability of having a name. Maybe they should be _inherited_?
+
+When deciding whether or not to use inheritance, try to describe the relationship between the two classes. Are you using the phrases "is a" or "is a kind of"? That's your coder conscience hinting that an inheritance relationship is probably appropriate. In fact, Ruby has methods named `is_a?` and `kind_of?` for confirming these types of relationships between classes.
+
+#### Voters
+
+`Voter`s need to remember their:
+
+- `name`
+- `politics` (Liberal, Conservative, Tea Party, Socialist, or Neutral)
+
+These _attributes_ should be stored somewhere in the `class`. Are they methods or instance variables?
+
+To help you decide, try to put the feature into words.
+
+Are you using phrases like "has a", "has one", "has many", or "contains"? That's your coder conscience telling you an attribute or instance variable is appropriate.
+
+Are you instead using phrases like "can", "has the ability to", or "is capable of"? That's a hint you should be representing that ability with a method.
+
+
+#### Politician
+
+`Politician`s need to remember their:
+
+- `name`
+- `party` (Democrat or Republican).
+
+### The World
+
+Characters don't exist in a vacuum. They need a place to exist and interact with other characters.
+
+You can't create a chess game without modeling the board. Similarly, you can't run a voting simulation without modeling the world: the country, city, district, etc.
+
+Your world `class` stores all the characters. When the characters interact with each other, they meet each other in this world you've created for them.
+
+The world needs to keep track of:
+
+1. All the `Voter's`
+1. All the `Politician's`
+
+The world should be able to contain the characters.
+
+To make testing your simulation easier, try saving the user interaction (`gets`ing input) for the end. Just plug all the data directly into your classes first, then replace all the _hard-coded_ `"strings"` with `gets.chomp`.
+
+Another useful technique for making your code simpler is to hide long `String`s inside a `module`. Instead of
+
+```ruby
+puts "Who would you like to update?"
