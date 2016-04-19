@@ -15,14 +15,16 @@ class DB
 		@politicians = []
 		@password = "chad"
 	end
-	def list_voters
-		@voters.each do |voter|
-			puts "#{COLORS[:lightblue]}Name: #{voter.name} *** Affiliation: #{voter.affiliation}#{COLORS[:none]}"
-		end
-	end
-	def list_politicians
-		@politicians.each do |pol|
-			puts "#{COLORS[:yellow]}Name: #{pol.name} *** Party: #{pol.party}#{COLORS[:none]}"
+	def list(type)
+    case type
+    when "v"
+			@voters.each do |voter|
+				puts "#{COLORS[:lightblue]}Name: #{voter.name} *** Affiliation: #{voter.affiliation}#{COLORS[:none]}"
+			end
+		when "p"
+			@politicians.each do |pol|
+				puts "#{COLORS[:yellow]}Name: #{pol.name} *** Party: #{pol.party}#{COLORS[:none]}"
+		  end
 		end
 	end
 
@@ -290,7 +292,7 @@ class DB
 	    	  response = gets.chomp.downcase.slice(0,1)
 	    	  case response
 	    	  when "l"
-	    	  	list_voters
+	    	  	list("v")
 	    	  when "c"
 	    	  	register_voter
 	    	  when "u"
@@ -315,7 +317,7 @@ class DB
 	    	  response = gets.chomp.downcase.slice(0,1)
 	    	  case response
 	    	  when "l"
-	    	  	list_politicians
+	    	  	list("p")
 	    	  when "c"
 	    	  	register_politician
 	    	  when "u"
