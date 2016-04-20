@@ -16,16 +16,14 @@ COLORS = { 			none: "\033[0m",
 								lightcyan: "\033[1;36m",
 								white: "\033[1;37m" }
 
-def alternate_colors(str, color1, color2)
+def alternate_colors(str, *colors)
   arr = str.chars
-  alt = false
-  arr.map! do |letter|
-  	alt = !alt
-  	if (alt)
-  		"#{COLORS[color1]}#{letter}"
-  	else
-  		"#{COLORS[color2]}#{letter}"
-  	end
+  buf = ""
+  if colors == []
+  	colors = [:none]
   end
-  return arr.join + COLORS[:none]
+  arr.length.times do |idx|
+  	buf += "#{COLORS[colors[idx % colors.length]]}#{arr[idx]}"
+  end
+  return buf + COLORS[:none]
 end
